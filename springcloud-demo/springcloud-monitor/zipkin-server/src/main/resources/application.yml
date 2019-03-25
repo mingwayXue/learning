@@ -1,0 +1,8 @@
+server:
+  port: 9411  #zipkin指定端口号
+spring:
+  application:
+    name: zipkin-server
+zipkin:
+  storage:
+    type: mem   #默认存储在内存中，此外还有es、mysql
