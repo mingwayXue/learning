@@ -5,5 +5,7 @@
 * **[springcloud-demo](https://github.com/mingwayXue/Learning/tree/master/springcloud-demo)**    springcloud学习代码
 * **[springboot2.0](https://github.com/mingwayXue/Learning/tree/master/springboot2.0)**     springboot2.0新特性
 * **[design-patterns](https://github.com/mingwayXue/Learning/tree/master/design-patterns)**     设计模式相关代码
+* **[advanced-java](https://github.com/mingwayXue/Learning/tree/master/advanced-java)**     Java高级特性学习
+
 
 
