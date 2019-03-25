@@ -1,0 +1,68 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: api-gateway
+  mail:   #邮件相关
+    host: smtp.163.com
+    username: xue8231134@163.com
+    password: 713900weiX
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  freemarker:
+    cache: false    #缓存，开发时关闭，正式环境开启
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-spring-macro-helpers: true
+    expose-session-attributes: true
+    allow-session-override: true
+    suffix: .ftl
+    settings:
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      default_encoding: UTF-8
+      number_format: 0.##########
+      auto_import: common/common.ftl as common
+      template_exception_handler: ignore
+      template_update_delay: 0
+  zipkin:  #zipkin服务端地址
+    base-url: http://127.0.0.1:9411
+  sleuth:
+    sampler:
+      probability: 1  #sleth采样比例
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka/
+    register-with-eureka: false   #是否向服务注册中心注册为服务提供者
+logbook:
+  write:
+    level: info
+  format:
+    style: curl   #默认是http，这里修改成curl
+#user:   #在使用ribbon负载均衡策略时，需要配置该属性，否则会出现找不到user服务的异常（注：多个应用使用“,”分隔）
+#  ribbon:
+#    listOfServers: 127.0.0.1:8000
+file:
+  path: /apps/conf/jiebaoyun/monitor
+  prefix: http://127.0.0.1:8001/images
+service:
+  name:
+    user: user    #用户服务
+    house: house    #房产服务
+    comment: comment    #评论服务
+domain:
+  name: 127.0.0.1:8002
+management:   #actuator监控配置
+  server:
+    port: 8100  #actuator监控端口，但不指定时，默认使用服务端口
+  endpoints:
+    web:
+      exposure:
+        include: '*'    #开放所有页面节点  默认只开启了health、info两个节点
+#      base-path: /      #修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改；注：这里修改后，会导致hystrix-dashboard连接不上改地址

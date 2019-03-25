@@ -1,0 +1,64 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: user
+  druid:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: root
+    password: 123
+    maxActive: 20
+    minIdle: 3
+    maxWait: 10000
+    validationQuery: SELECT 'x'
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    borrowConnectionTimeout: 30000
+  redis:    #redis配置
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 10     #最大连接数ion=classpath:/mybatis/mybatis-config.xml
+  mail:
+    host: smtp.163.com
+    username: xue8231134@163.com
+    password: 713900weiX
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  zipkin:
+    base-url: http://localhost:9411    #zipkin服务端地址
+  sleuth:
+    sampler:
+      probability: 1  #sleth采样比例
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka/
+  healthcheck:
+    enabled: true   #是否向服务中心提交建康检查，需要集成spring actuator
+  instance:
+    lease-expiration-duration-in-seconds: 10  #与服务注册中心心跳检测过期时间
+    lease-renewal-interval-in-seconds: 5    #与服务注册中心心跳检测间隔时间
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    home-page-url-path: /
+logbook:
+  write:
+    level: info
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
+file:
+  path: /apps/conf/jiebaoyun/monitor
+  prefix: http://127.0.0.1:8001/images
+service:
+  name:
+    user: user    #用户服务
+    house: house    #房产服务
+    comment: comment    #评论服务

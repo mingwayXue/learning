@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: eureka-server  #应用名称，在集群中的唯一标识
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  server:
+    renewal-percent-threshold: 0.5  #留存的服务实例低于多少比例进入保护模式
+    enable-self-preservation: true  #是否开启保护模式
+  client:
+    register-with-eureka: false #是否注册为一个eureka-client（在这里选择false，在高可用模式下，开启）
+    fetch-registry: false #是否启用获取服务注册的信息（在此选择false，作为单实例的server，不需要获取）
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka/  #注册、查询都需要该地址，多个以逗号分隔
