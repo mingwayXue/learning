@@ -1,0 +1,9 @@
+server:
+  port: 8080
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch     #默认的集群名
+      cluster-nodes: 127.0.0.1:9300   #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode（9200端口是http查询使用的。9300集群使用。这里使用9300.）
+      repositories:
+        enabled: true                 #开启类似于Spring Jpa的Repository操作
