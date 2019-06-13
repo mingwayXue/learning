@@ -1,0 +1,9 @@
+server:
+  port: 9898
+spring:
+  datasource:
+    phoenix:
+      url: jdbc:phoenix:172.16.18.2:2181
+      driver-class-name: org.apache.phoenix.jdbc.PhoenixDriver
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
